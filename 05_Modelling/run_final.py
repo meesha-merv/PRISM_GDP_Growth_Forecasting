@@ -1,4 +1,4 @@
-"""Final experiments (weeks 5-8): tuning, RQ1 arms, importance, RQ2 intervals,
+"""Final experiments: tuning, RQ1 arms, importance, RQ2 intervals,
 monthly refresh of the final model. Run after run_experiments.py.
 
     python run_final.py
