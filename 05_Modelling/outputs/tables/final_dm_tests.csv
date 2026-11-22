@@ -1,0 +1,49 @@
+,model,bench,loss,n,mean_loss_diff,DM_HLN,p_value,cutoff,h
+0,C. PRISM final (+ quarterly GDP),IMF WEO,se,182,15.8023,2.055,0.0413,4,0
+1,C. PRISM final (+ quarterly GDP),IMF WEO,ae,182,0.6274,3.3253,0.0011,4,0
+2,C. PRISM final (+ quarterly GDP),AR(2) pooled,se,197,-2.2308,-0.8156,0.4157,4,0
+3,C. PRISM final (+ quarterly GDP),AR(2) pooled,ae,197,-0.2447,-2.262,0.0248,4,0
+4,C. PRISM final (+ quarterly GDP),Naive (real-time),se,197,-28.0795,-1.5568,0.1211,4,0
+5,C. PRISM final (+ quarterly GDP),Naive (real-time),ae,197,-0.7933,-3.1863,0.0017,4,0
+6,"B. Annual-only, real-time lags","A. Annual-only, revised lags",se,197,-1.5246,-0.7246,0.4696,4,0
+7,"B. Annual-only, real-time lags","A. Annual-only, revised lags",ae,197,-0.0259,-0.2774,0.7818,4,0
+8,C. PRISM final (+ quarterly GDP),"B. Annual-only, real-time lags",se,197,-0.2469,-0.1121,0.9109,4,0
+9,C. PRISM final (+ quarterly GDP),"B. Annual-only, real-time lags",ae,197,-0.0768,-0.88,0.3799,4,0
+10,C. PRISM final (+ quarterly GDP),"GBM preview (untuned, with Pink Sheet)",se,197,-0.7019,-0.7778,0.4376,4,0
+11,C. PRISM final (+ quarterly GDP),"GBM preview (untuned, with Pink Sheet)",ae,197,-0.0611,-1.0644,0.2885,4,0
+12,C. PRISM final (+ quarterly GDP),IMF WEO,se,176,5.4952,1.7068,0.0896,4,1
+13,C. PRISM final (+ quarterly GDP),IMF WEO,ae,176,0.2187,1.3173,0.1895,4,1
+14,C. PRISM final (+ quarterly GDP),AR(2) pooled,se,190,0.2708,0.1812,0.8564,4,1
+15,C. PRISM final (+ quarterly GDP),AR(2) pooled,ae,190,-0.1266,-1.2754,0.2037,4,1
+16,C. PRISM final (+ quarterly GDP),Naive (real-time),se,190,-24.4801,-2.0725,0.0396,4,1
+17,C. PRISM final (+ quarterly GDP),Naive (real-time),ae,190,-0.9335,-2.8795,0.0044,4,1
+18,"B. Annual-only, real-time lags","A. Annual-only, revised lags",se,190,0.6209,0.5702,0.5692,4,1
+19,"B. Annual-only, real-time lags","A. Annual-only, revised lags",ae,190,0.0337,0.6106,0.5422,4,1
+20,C. PRISM final (+ quarterly GDP),"B. Annual-only, real-time lags",se,190,0.8906,0.913,0.3624,4,1
+21,C. PRISM final (+ quarterly GDP),"B. Annual-only, real-time lags",ae,190,0.0334,0.6439,0.5204,4,1
+22,C. PRISM final (+ quarterly GDP),"GBM preview (untuned, with Pink Sheet)",se,190,0.2986,0.3273,0.7438,4,1
+23,C. PRISM final (+ quarterly GDP),"GBM preview (untuned, with Pink Sheet)",ae,190,-0.0184,-0.2954,0.768,4,1
+24,C. PRISM final (+ quarterly GDP),IMF WEO,se,182,13.6421,1.9057,0.0583,6,0
+25,C. PRISM final (+ quarterly GDP),IMF WEO,ae,182,0.5198,2.765,0.0063,6,0
+26,C. PRISM final (+ quarterly GDP),AR(2) pooled,se,197,-4.3552,-1.5383,0.1256,6,0
+27,C. PRISM final (+ quarterly GDP),AR(2) pooled,ae,197,-0.3342,-2.7666,0.0062,6,0
+28,C. PRISM final (+ quarterly GDP),Naive (real-time),se,197,-30.2039,-1.6698,0.0965,6,0
+29,C. PRISM final (+ quarterly GDP),Naive (real-time),ae,197,-0.8828,-3.3925,0.0008,6,0
+30,"B. Annual-only, real-time lags","A. Annual-only, revised lags",se,197,-1.5246,-0.7246,0.4696,6,0
+31,"B. Annual-only, real-time lags","A. Annual-only, revised lags",ae,197,-0.0259,-0.2774,0.7818,6,0
+32,C. PRISM final (+ quarterly GDP),"B. Annual-only, real-time lags",se,197,-2.3712,-0.9036,0.3673,6,0
+33,C. PRISM final (+ quarterly GDP),"B. Annual-only, real-time lags",ae,197,-0.1663,-1.5075,0.1333,6,0
+34,C. PRISM final (+ quarterly GDP),"GBM preview (untuned, with Pink Sheet)",se,197,-0.6613,-0.7526,0.4526,6,0
+35,C. PRISM final (+ quarterly GDP),"GBM preview (untuned, with Pink Sheet)",ae,197,-0.0365,-0.4538,0.6504,6,0
+36,C. PRISM final (+ quarterly GDP),IMF WEO,se,176,5.3113,1.6643,0.0978,6,1
+37,C. PRISM final (+ quarterly GDP),IMF WEO,ae,176,0.1893,1.1221,0.2633,6,1
+38,C. PRISM final (+ quarterly GDP),AR(2) pooled,se,190,0.0287,0.0183,0.9854,6,1
+39,C. PRISM final (+ quarterly GDP),AR(2) pooled,ae,190,-0.1668,-1.7458,0.0825,6,1
+40,C. PRISM final (+ quarterly GDP),Naive (real-time),se,190,-24.7222,-2.0964,0.0374,6,1
+41,C. PRISM final (+ quarterly GDP),Naive (real-time),ae,190,-0.9737,-2.984,0.0032,6,1
+42,"B. Annual-only, real-time lags","A. Annual-only, revised lags",se,190,0.6209,0.5702,0.5692,6,1
+43,"B. Annual-only, real-time lags","A. Annual-only, revised lags",ae,190,0.0337,0.6106,0.5422,6,1
+44,C. PRISM final (+ quarterly GDP),"B. Annual-only, real-time lags",se,190,0.6485,0.852,0.3953,6,1
+45,C. PRISM final (+ quarterly GDP),"B. Annual-only, real-time lags",ae,190,-0.0069,-0.123,0.9023,6,1
+46,C. PRISM final (+ quarterly GDP),"GBM preview (untuned, with Pink Sheet)",se,190,0.9085,0.7491,0.4547,6,1
+47,C. PRISM final (+ quarterly GDP),"GBM preview (untuned, with Pink Sheet)",ae,190,0.0112,0.1581,0.8745,6,1

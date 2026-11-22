@@ -1,0 +1,21 @@
+,model,bench,n,mean_loss_diff,DM_HLN,p_value
+0,Naive (real-time),IMF WEO,182,44.2477,1.7257,0.0861
+1,Naive (revised data),IMF WEO,181,61.3843,2.2498,0.0257
+2,Country mean,IMF WEO,182,20.9484,2.4963,0.0134
+3,AR(2) pooled,IMF WEO,182,18.4007,1.9483,0.0529
+4,AR(2) + country FE,IMF WEO,182,21.5887,2.2595,0.025
+5,Ridge + FE (annual only),IMF WEO,182,24.5203,2.5385,0.012
+6,Ridge + country FE,IMF WEO,182,20.4725,2.1556,0.0324
+7,Ridge pooled,IMF WEO,182,17.6179,1.9215,0.0562
+8,GBM (HistGB),IMF WEO,182,16.5361,2.1357,0.034
+9,WEO + ridge correction,IMF WEO,182,3.4366,1.6464,0.1014
+10,Naive (revised data),Naive (real-time),182,16.7994,2.4925,0.0136
+11,Country mean,Naive (real-time),183,-23.6044,-1.0746,0.284
+12,AR(2) pooled,Naive (real-time),183,-26.7501,-1.5847,0.1148
+13,AR(2) + country FE,Naive (real-time),183,-23.4237,-1.2415,0.216
+14,Ridge + FE (annual only),Naive (real-time),183,-20.608,-1.1183,0.2649
+15,Ridge + country FE,Naive (real-time),183,-24.6437,-1.3664,0.1735
+16,Ridge pooled,Naive (real-time),183,-27.5664,-1.5846,0.1148
+17,GBM (HistGB),Naive (real-time),183,-28.2689,-1.4488,0.1491
+18,IMF WEO,Naive (real-time),182,-44.2477,-1.7257,0.0861
+19,WEO + ridge correction,Naive (real-time),182,-40.8111,-1.6602,0.0986

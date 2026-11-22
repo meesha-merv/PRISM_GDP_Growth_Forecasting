@@ -1,0 +1,8 @@
+sample,Rest of world,Rest of world,South Asia,South Asia
+family,GBM,Ridge,GBM,Ridge
+features,,,,
+growth history only,5.851,5.9,6.363,6.354
++ annual WDI,5.744,5.947,6.292,6.358
++ annual + monthly GEM,5.647,5.83,6.239,6.327
++ annual + monthly + Pink Sheet,5.672,5.798,6.247,6.3
+"all features, REVISED growth lags",5.605,5.709,6.377,6.448

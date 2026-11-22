@@ -1,0 +1,25 @@
+,model,method,sample,n,coverage_%,mean_width_pp
+0,AR(2) pooled,adaptive,"South Asia, all years",190,76.84,11.37
+1,AR(2) pooled,adaptive,"South Asia, excl. 2020-21",174,81.03,11.61
+2,AR(2) pooled,adaptive,"South Asia, 2020-21 only",16,31.25,8.75
+3,AR(2) pooled,adaptive,Rest of world,4641,78.22,10.54
+4,AR(2) pooled,global,"South Asia, all years",190,82.11,9.0
+5,AR(2) pooled,global,"South Asia, excl. 2020-21",174,86.78,9.1
+6,AR(2) pooled,global,"South Asia, 2020-21 only",16,31.25,7.86
+7,AR(2) pooled,global,Rest of world,4641,78.95,9.0
+8,AR(2) pooled,scaled,"South Asia, all years",190,76.84,9.11
+9,AR(2) pooled,scaled,"South Asia, excl. 2020-21",174,82.18,9.25
+10,AR(2) pooled,scaled,"South Asia, 2020-21 only",16,18.75,7.54
+11,AR(2) pooled,scaled,Rest of world,4641,76.56,8.97
+12,GBM (HistGB),adaptive,"South Asia, all years",190,77.37,9.86
+13,GBM (HistGB),adaptive,"South Asia, excl. 2020-21",174,82.18,10.02
+14,GBM (HistGB),adaptive,"South Asia, 2020-21 only",16,25.0,8.15
+15,GBM (HistGB),adaptive,Rest of world,4641,77.87,10.13
+16,GBM (HistGB),global,"South Asia, all years",190,78.95,8.66
+17,GBM (HistGB),global,"South Asia, excl. 2020-21",174,82.76,8.76
+18,GBM (HistGB),global,"South Asia, 2020-21 only",16,37.5,7.59
+19,GBM (HistGB),global,Rest of world,4641,79.08,8.67
+20,GBM (HistGB),scaled,"South Asia, all years",190,74.74,8.65
+21,GBM (HistGB),scaled,"South Asia, excl. 2020-21",174,79.89,8.78
+22,GBM (HistGB),scaled,"South Asia, 2020-21 only",16,18.75,7.23
+23,GBM (HistGB),scaled,Rest of world,4641,77.25,8.83

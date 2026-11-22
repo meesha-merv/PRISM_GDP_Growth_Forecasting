@@ -1,0 +1,57 @@
+,model,n,RMSE,MAE,MAPE_%,R2,RMSE_vs_naive,cutoff,h,sample
+0,C0. + monthly GEM,197,6.166,3.309,55.229,-0.01,0.757,4,0,South Asia 2000-2024
+1,C. PRISM final (+ quarterly GDP),197,6.191,3.315,55.675,-0.018,0.76,4,0,South Asia 2000-2024
+2,"B. Annual-only, real-time lags",197,6.211,3.392,56.668,-0.025,0.762,4,0,South Asia 2000-2024
+3,"GBM preview (untuned, with Pink Sheet)",197,6.247,3.376,54.43,-0.037,0.767,4,0,South Asia 2000-2024
+4,"A. Annual-only, revised lags",197,6.332,3.418,55.143,-0.065,0.777,4,0,South Asia 2000-2024
+5,AR(2) pooled,197,6.368,3.56,53.94,-0.078,0.782,4,0,South Asia 2000-2024
+6,Naive (real-time),197,8.149,4.108,68.255,-0.764,1.0,4,0,South Asia 2000-2024
+0,C. PRISM final (+ quarterly GDP),4831,5.636,3.102,66.709,0.116,0.703,4,0,Rest of world 2000-2024
+1,C0. + monthly GEM,4831,5.654,3.118,66.87,0.111,0.705,4,0,Rest of world 2000-2024
+2,"GBM preview (untuned, with Pink Sheet)",4831,5.672,3.138,67.93,0.105,0.708,4,0,Rest of world 2000-2024
+3,"A. Annual-only, revised lags",4831,5.694,3.186,68.015,0.098,0.71,4,0,Rest of world 2000-2024
+4,"B. Annual-only, real-time lags",4831,5.724,3.211,68.859,0.088,0.714,4,0,Rest of world 2000-2024
+5,AR(2) pooled,4831,5.932,3.316,67.792,0.021,0.74,4,0,Rest of world 2000-2024
+6,Naive (real-time),4831,8.015,3.873,85.097,-0.787,1.0,4,0,Rest of world 2000-2024
+0,"A. Annual-only, revised lags",190,6.183,3.5,59.374,0.019,0.772,4,1,South Asia 2000-2024
+1,"B. Annual-only, real-time lags",190,6.233,3.534,60.352,0.003,0.778,4,1,South Asia 2000-2024
+2,"GBM preview (untuned, with Pink Sheet)",190,6.281,3.585,60.272,-0.012,0.784,4,1,South Asia 2000-2024
+3,AR(2) pooled,190,6.283,3.694,55.624,-0.013,0.784,4,1,South Asia 2000-2024
+4,C0. + monthly GEM,190,6.301,3.577,59.894,-0.018,0.786,4,1,South Asia 2000-2024
+5,C. PRISM final (+ quarterly GDP),190,6.304,3.567,60.055,-0.02,0.787,4,1,South Asia 2000-2024
+6,Naive (real-time),190,8.014,4.5,78.26,-0.648,1.0,4,1,South Asia 2000-2024
+0,AR(2) pooled,4631,5.937,3.439,71.943,0.017,0.74,4,1,Rest of world 2000-2024
+1,"B. Annual-only, real-time lags",4631,5.985,3.471,75.362,0.001,0.746,4,1,Rest of world 2000-2024
+2,"A. Annual-only, revised lags",4631,5.986,3.484,75.732,0.0,0.746,4,1,Rest of world 2000-2024
+3,C0. + monthly GEM,4631,5.987,3.464,75.1,0.0,0.746,4,1,Rest of world 2000-2024
+4,C. PRISM final (+ quarterly GDP),4631,5.988,3.463,74.859,-0.0,0.746,4,1,Rest of world 2000-2024
+5,"GBM preview (untuned, with Pink Sheet)",4631,6.039,3.49,75.742,-0.018,0.753,4,1,Rest of world 2000-2024
+6,Naive (real-time),4631,8.024,4.36,98.146,-0.796,1.0,4,1,Rest of world 2000-2024
+0,C. PRISM final (+ quarterly GDP),197,6.017,3.226,54.218,0.038,0.738,6,0,South Asia 2000-2024
+1,"GBM preview (untuned, with Pink Sheet)",197,6.072,3.262,53.784,0.021,0.745,6,0,South Asia 2000-2024
+2,C0. + monthly GEM,197,6.103,3.288,54.286,0.01,0.749,6,0,South Asia 2000-2024
+3,"B. Annual-only, real-time lags",197,6.211,3.392,56.668,-0.025,0.762,6,0,South Asia 2000-2024
+4,"A. Annual-only, revised lags",197,6.332,3.418,55.143,-0.065,0.777,6,0,South Asia 2000-2024
+5,AR(2) pooled,197,6.368,3.56,53.94,-0.078,0.782,6,0,South Asia 2000-2024
+6,Naive (real-time),197,8.149,4.108,68.255,-0.764,1.0,6,0,South Asia 2000-2024
+0,"GBM preview (untuned, with Pink Sheet)",4831,5.402,2.982,65.279,0.188,0.674,6,0,Rest of world 2000-2024
+1,C. PRISM final (+ quarterly GDP),4831,5.437,2.895,61.726,0.178,0.678,6,0,Rest of world 2000-2024
+2,C0. + monthly GEM,4831,5.53,3.027,65.269,0.149,0.69,6,0,Rest of world 2000-2024
+3,"A. Annual-only, revised lags",4831,5.694,3.186,68.015,0.098,0.71,6,0,Rest of world 2000-2024
+4,"B. Annual-only, real-time lags",4831,5.724,3.211,68.859,0.088,0.714,6,0,Rest of world 2000-2024
+5,AR(2) pooled,4831,5.932,3.316,67.792,0.021,0.74,6,0,Rest of world 2000-2024
+6,Naive (real-time),4831,8.015,3.873,85.097,-0.787,1.0,6,0,Rest of world 2000-2024
+0,"A. Annual-only, revised lags",190,6.183,3.5,59.374,0.019,0.772,6,1,South Asia 2000-2024
+1,"GBM preview (untuned, with Pink Sheet)",190,6.213,3.515,58.939,0.01,0.775,6,1,South Asia 2000-2024
+2,"B. Annual-only, real-time lags",190,6.233,3.534,60.352,0.003,0.778,6,1,South Asia 2000-2024
+3,AR(2) pooled,190,6.283,3.694,55.624,-0.013,0.784,6,1,South Asia 2000-2024
+4,C. PRISM final (+ quarterly GDP),190,6.285,3.527,58.445,-0.013,0.784,6,1,South Asia 2000-2024
+5,C0. + monthly GEM,190,6.31,3.542,58.409,-0.021,0.787,6,1,South Asia 2000-2024
+6,Naive (real-time),190,8.014,4.5,78.26,-0.648,1.0,6,1,South Asia 2000-2024
+0,AR(2) pooled,4631,5.937,3.439,71.943,0.017,0.74,6,1,Rest of world 2000-2024
+1,C. PRISM final (+ quarterly GDP),4631,5.973,3.464,74.808,0.005,0.744,6,1,Rest of world 2000-2024
+2,C0. + monthly GEM,4631,5.979,3.46,74.755,0.003,0.745,6,1,Rest of world 2000-2024
+3,"B. Annual-only, real-time lags",4631,5.985,3.471,75.362,0.001,0.746,6,1,Rest of world 2000-2024
+4,"GBM preview (untuned, with Pink Sheet)",4631,5.986,3.472,75.253,0.0,0.746,6,1,Rest of world 2000-2024
+5,"A. Annual-only, revised lags",4631,5.986,3.484,75.732,0.0,0.746,6,1,Rest of world 2000-2024
+6,Naive (real-time),4631,8.024,4.36,98.146,-0.796,1.0,6,1,Rest of world 2000-2024
