@@ -1,21 +1,11 @@
-# PRISM, Part 5: Baseline models and evaluation
+# Baseline models and evaluation
 
 Forecasting real GDP growth in South Asia with vintage-aware, mixed-frequency features, benchmarked against IMF WEO
-forecasts. Chowdhury R Adnan (st127357) · Meesha Mervyn (st127378) · AST02.10, AIT.
-
-This folder holds the training / testing / evaluation code for the baseline ladder and the gradient-boosting preview.
-It follows the four EDA notebooks (`01_Acquire_Data` … `04_Bivariate_Analysis`).
+forecasts. Chowdhury R Adnan and Meesha Mervyn
 
 ## Folder layout
 
-The code expects the data folders exactly as they come out of the submission zips, one level up:
-
-```
-Meesha/
-├── wdi-dataset/wdi/*.csv              annual WDI indicators + geo.csv
-├── raw-datafiles/raw/                 gem_monthly.csv, CMO-Historical-Data-Monthly.xlsx,
-│                                      WEOhistorical.xlsx, gep_2026.csv, ...
-└── 05_Modelling/                      <- this folder
+└── 05_Modelling/                      
     ├── 05_Baseline_Models.ipynb       the workflow, step by step, with outputs
     ├── run_experiments.py             regenerates every table and figure
     ├── notebook_cells.py              source of the notebook (plain Python, cell markers)
@@ -31,7 +21,7 @@ Meesha/
     └── outputs/
         ├── tables/*.csv               every number quoted in the report
         ├── figures/*.png
-        └── cache/                     feature stores and predictions (safe to delete)
+        └── cache/                     feature stores and predictions
 ```
 
 ## How to run
@@ -106,7 +96,7 @@ by effective horizon, and against two "truths" (today's WDI, the IMF's first pub
 
 All feature models beat the naive forecast; none beats the IMF yet. Full tables: `outputs/tables/`.
 
-## Final stage (weeks 5-8)
+## Final stage
 
 ```bash
 python run_experiments.py      # the progress-report ladder (needed first; reproduces all 30 tables)
@@ -122,4 +112,4 @@ New modules:
 
 Final model ("C. PRISM final"): growth history (real-time) + annual WDI + monthly GEM + quarterly GDP, scikit-learn
 histogram gradient boosting with tuned hyperparameters. South Asia, April cutoff, h = 0, 2000-2022: RMSE 6.37
-(IMF WEO 4.98, AR(2) 6.57, naive 8.31); excluding 2020-21: 4.61 (IMF 3.95). Deployment: see `../deploy/DEPLOYMENT.md`.
+(IMF WEO 4.98, AR(2) 6.57, naive 8.31); excluding 2020-21: 4.61 (IMF 3.95).
