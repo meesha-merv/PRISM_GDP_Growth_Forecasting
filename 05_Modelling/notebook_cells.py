@@ -1,7 +1,6 @@
 # %% [markdown]
 # # GDP Growth Forecasting, Part 5: Baseline Models and Evaluation
 #
-# **Project:** Forecasting real GDP growth in South Asia · Chowdhury R Adnan (st127357) & Meesha Mervyn (st127378)
 #
 # Parts 1–4 (`01_Acquire_Data` … `04_Bivariate_Analysis`) explored the WDI panel. This part builds the forecasting
 # system and scores the baseline ladder. It answers the three weaknesses raised at the proposal presentation:
