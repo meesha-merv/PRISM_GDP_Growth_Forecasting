@@ -4,7 +4,7 @@ Forecasting real GDP growth in South Asia with vintage-aware, mixed-frequency fe
 forecasts. Chowdhury R Adnan and Meesha Mervyn
 
 ## Folder layout
-
+```
 └── 05_Modelling/                      
     ├── 05_Baseline_Models.ipynb       the workflow, step by step, with outputs
     ├── run_experiments.py             regenerates every table and figure
@@ -28,8 +28,8 @@ forecasts. Chowdhury R Adnan and Meesha Mervyn
 
 ```bash
 cd 05_Modelling
-pip install -r requirements.txt        # lightgbm is optional, see below
-python run_experiments.py              # ~20 min the first time, seconds after (cache)
+pip install -r requirements.txt        # lightgbm is optional
+python run_experiments.py              
 python run_experiments.py --fresh      # rebuild everything from the raw files
 ```
 
@@ -84,24 +84,13 @@ by effective horizon, and against two "truths" (today's WDI, the IMF's first pub
 * Conformal 80% intervals: global, country-scaled, adaptive (ACI); coverage overall, outside and inside 2020–21.
 * Monthly refresh: the same current-year target at every month-end cutoff, January to December.
 
-## Headline results (South Asia, April cutoff, 2000–2022)
-
-| | RMSE *h*=0 | RMSE *h*=1 |
-|---|---|---|
-| Naive (real-time) | 8.25 | 7.47 |
-| AR(2) pooled | 6.51 | 6.16 |
-| Ridge pooled | 6.46 | 6.23 |
-| GBM preview | 6.35 | 6.17 |
-| **IMF WEO** | **4.86** | **5.73** |
-
-All feature models beat the naive forecast; none beats the IMF yet. Full tables: `outputs/tables/`.
 
 ## Final stage
 
 ```bash
 python run_experiments.py      # the progress-report ladder (needed first; reproduces all 30 tables)
 python run_final.py            # tuning, RQ1 arms, importance, RQ2 intervals, monthly refresh -> outputs/tables/final_*.csv
-python train_final.py          # final model + deployment bundle -> ../deploy/prism-space/bundle/
+python train_final.py          # final model + deployment bundle 
 ```
 
 New modules:
