@@ -1,4 +1,4 @@
-# PRISM, Part 5: Baseline models and evaluation
+# PRISM Baseline models and evaluation
 
 Forecasting real GDP growth in South Asia with vintage-aware, mixed-frequency features, benchmarked against IMF WEO
 forecasts. Chowdhury R Adnan · Meesha Mervyn
