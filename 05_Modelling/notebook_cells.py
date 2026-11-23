@@ -42,12 +42,7 @@ print('Raw folder :', C.RAW_DIR)
 print('Gradient boosting backend:', GBM)
 
 # %% [markdown]
-# **About the gradient-boosting backend.** The proposed model is LightGBM. `models.GBM` uses LightGBM whenever
-# it is installed (`pip install lightgbm`). If it is not, it falls back to scikit-learn's
-# `HistGradientBoostingRegressor`, which uses the same histogram-based boosting and handles missing values
-# natively. The results saved in this notebook were produced with the fallback; the LightGBM run is a Week-5 task.
-# At this stage the GBM is a **preview** with untuned, conservative settings; the point of Part 5 is the baselines.
-
+# 
 # %% [markdown]
 # ## 1. Reconcile reporting periods (feedback B2)
 #
@@ -70,53 +65,14 @@ print('Gradient boosting backend:', GBM)
 align = R.label_alignment()
 align[['country', 'fiscal_year', 'MAE_shift_-1', 'MAE_shift_+0', 'MAE_shift_+1', 'best_shift']].round(2)
 
-# %% [markdown]
-# Every country matches at shift 0, with a gap 1.6 to 2.7 times smaller than at ±1. **WEO and WDI use the same year
-# labels**, so the IMF comparison is like-for-like on labels. The gap at shift 0 is not zero, though: it is the
-# **revision gap** between what the IMF printed and what WDI shows today (about 0.5 pp for Bangladesh, 0.9 pp for India,
-# 2.6 pp for Maldives). That is direct evidence that the choice of "truth" vintage matters (see Step 5c).
 #
-# The GEP file holds only the June 2026 vintage. Its 2023–2024 columns are already history, so we run the same check:
-
 # %%
 R.gep_alignment().round(2)
 
-# %% [markdown]
-# GEP matches WDI at shift 0 for seven countries (gaps of 0.02–0.33 pp). **India is ambiguous**: shift 0 and shift +1
-# give similar gaps, most likely because India rebased its national accounts in 2026, so GEP and the older WDI
-# snapshot are on different base years. This is flagged as an open item. It matters only for the forward-looking
-# 2026–27 comparison, because **the file has no historical GEP vintages, so the World Bank cannot be scored
-# historically yet** (see the progress report, challenges).
-#
-# **Effective horizon.** At an end-April cutoff, how many months of each country's target year are still ahead?
 
 # %%
 R.effective_horizons(4)
 
-# %% [markdown]
-# At the April WEO round, a "current-year" forecast is a near-nowcast for Pakistan, Bangladesh, Bhutan and Nepal
-# (2–3 months left), an 8-month-ahead forecast for Sri Lanka, Maldives and Afghanistan, and an 11-month-ahead forecast
-# for India. Pooling them as one "h = 0" hides this, so Step 5d reports errors by effective horizon. The feature
-# store also adds **fiscal-year-to-date** monthly features that average only the months of the target reporting year.
-
-# %% [markdown]
-# ## 2. The vintage-aware feature store (feedback B1)
-#
-# `features.build_store(cutoff_month, horizon)` returns one row per (country, origin year *t*). Each row holds
-# only what was public at the end of month *m* of year *t*, and the realised growth of year *t*+*h*.
-#
-# | Block | Source | Rule at cutoff (year *t*, month *m*) |
-# |---|---|---|
-# | Growth history | WEO vintages | Real-time growth of *t*−1 and *t*−2 **as printed in the latest WEO round** (Oct *t*−1, Apr *t* or Oct *t*). Falls back to WDI only where WEO has no number. |
-# | Annual structure | WDI | Year *t*−1 values only from July (the WDI release); before that, *t*−2. Carried forward within the country for at most 2 years. |
-# | Monthly country signals | GEM | 3-month average, year-on-year, up to the last month published (lags of 0–2 months by series). Plus fiscal-year-to-date growth of IP, exports and imports for the target year. |
-# | Global shocks | Pink Sheet | 3-month y/y change in energy, non-energy, food and metals indices, lag 1 month. |
-# | Global cycle | WDI | Median growth of all countries in the last known year. |
-#
-# **What changed from Part 2.** Part 2 filled gaps with a 2-year forward fill and then the **median of the same
-# income group**. That median is taken across countries *in the same year*, including years after the forecast date,
-# and it is computed on the whole sample. Here there is no cross-sectional fill. Remaining gaps stay `NaN`; the linear
-# models fill them with the median **of the training fold only**, plus a 0/1 missing flag. The tree model takes `NaN` directly.
 
 # %%
 store = E.load_store(4, 0)
@@ -129,22 +85,12 @@ print(store.shape)
 cols = ['iso', 'year', 'target_year', 'y', 'g_lag1', 'g_lag1_rt', 'exports_m_fytd', 'pink_energy_yoy3', 'remittances_a', 'months_ahead']
 store.query("iso == 'LKA' and 2018 <= year <= 2023")[cols].round(2)
 
-# %% [markdown]
-# `g_lag1` is last year's growth as WDI shows it **today**; `g_lag1_rt` is the number the IMF printed in April of that
-# year. For Sri Lanka in April 2019, the 2018 figure was 3.0% in real time but 2.3% after revision. A model trained
-# on `g_lag1` learns from numbers nobody had. (From 2023 the WEO file ends, so `g_lag1_rt` falls back to WDI.)
-#
-# How much of the South Asian feature matrix is missing under the new rules (rows used for evaluation, 2000–2024)?
 
 # %%
 sa = store[(store.is_sa == 1) & store.year.between(2000, 2024)]
 miss = sa[groups['annual'] + groups['monthly']].isna().mean().sort_values(ascending=False)
 miss.head(12).round(2).to_frame('share missing')
 
-# %% [markdown]
-# Industrial production, the REER and the monthly trade series are missing for several South Asian economies (GEM
-# does not cover Afghanistan, Bhutan or Nepal for most of them). Under Part 2's method these cells would have been
-# filled with the income-group median; here they stay empty and the model is told they are empty.
 
 # %% [markdown]
 # ## 3. The model ladder
@@ -163,9 +109,6 @@ miss.head(12).round(2).to_frame('share missing')
 # | B | **IMF WEO** | WEO forecast from the latest round at the cutoff | the institutional benchmark (held out, never a feature except in 9) |
 # | 9 | WEO + ridge correction | WEO plus a ridge model of WEO's past error | the proposal's stacked correction |
 #
-# **A correction to the proposal.** The proposal listed *country and year* fixed effects. Year effects cannot be used
-# to forecast: the effect of a future year is unknown at the forecast date. They are replaced with observed common
-# factors (world growth, commodity prices), which a forecaster does have.
 #
 # Linear models and the GBM are trained on the target clipped at the training fold's 1st/99th percentiles (the
 # winsorising from Part 3). Scores always use the **unclipped** realised value.
@@ -233,10 +176,6 @@ pd.concat({'h=0': dm0[dm0.bench == 'IMF WEO'].set_index('model'),
            'h=1': dm1[dm1.bench == 'IMF WEO'].set_index('model')}, axis=1)[
     [('h=0', 'mean_loss_diff'), ('h=0', 'p_value'), ('h=1', 'mean_loss_diff'), ('h=1', 'p_value')]].round(3)
 
-# %% [markdown]
-# **Which truth?** Scored against the IMF's first published estimate (a year later) instead of today's WDI value:
-
-# %%
 pd.read_csv(C.TAB_DIR / 'm04_h0_scores_vs_first_release.csv', index_col=0)
 
 # %% [markdown]
@@ -274,7 +213,7 @@ X.ablation(4, 0)
 # ## 7. Prediction intervals (towards research question 2)
 # Split-conformal 80% intervals, built only from earlier out-of-sample residuals (last 10 origins, all countries):
 #
-# * **global**: one half-width for everyone (the proposal's design);
+# * **global**: one half-width for everyone;
 # * **scaled**: residuals divided by each country's own past residual spread, so volatile economies get wider bands;
 # * **adaptive**: scaled, plus adaptive conformal inference: each country's miscoverage level moves after every
 #   hit or miss, once that outcome is public.
@@ -298,28 +237,3 @@ pd.read_csv(C.TAB_DIR / 'refresh_h0_rmse_by_cutoff.csv', index_col=0)[
 # %%
 Image(filename=str(C.FIG_DIR / 'fig2_monthly_refresh.png'))
 
-# %% [markdown]
-# ## 9. What the findings suggest
-#
-# 1. **Every model beats the naive forecast, and the IMF beats every model.** At the April cutoff (*h* = 0) the best
-#    feature model (GBM preview, RMSE 6.35 pp) is 23% better than the real-time naive forecast (8.25), but the WEO is
-#    better still (4.86). The gap is statistically significant at *h* = 0 (DM p ≈ 0.03 for the GBM), not at *h* = 1
-#    (p ≈ 0.14), where, once 2020–21 are excluded, the AR(2) and GBM are 13–14% behind the IMF (4.33 and 4.35 vs 3.83).
-# 2. **Simple beats complex among the baselines.** Pooled AR(2) and pooled ridge match or beat the fixed-effects
-#    versions. Country dummies add noise: 60 years per country are too few to estimate them well. This confirms the
-#    global-panel design.
-# 3. **Revised data flatter.** The naive forecast built from revised data is 12% worse for South Asia than the real-time
-#    one at *h* = 0; in the ablation, revised lags look *better* for the rest of the world (5.61 vs 5.67) but *worse*
-#    for South Asia (6.38 vs 6.25). Revised history is not a free gain, and its look-ahead can mislead evaluation.
-# 4. **Monthly data help, a little, and keep helping through the year.** Adding GEM monthly features lowers GBM RMSE
-#    from 6.29 to 6.24 (South Asia) and 5.74 to 5.65 (rest of world). Through the year, GBM error falls from 6.43 (April)
-#    to 5.84 (December). The WEO falls faster, because it uses quarterly national accounts and country desk knowledge we do not have.
-# 5. **The IMF's lead is largest at the long effective horizon.** For India (11 months left at April) the IMF's RMSE is
-#    2.57 against 3.71; for the July–June reporters (2–3 months left) the gap is smaller (2.49 vs 2.99).
-# 6. **Intervals are calibrated in normal years and fail in crises.** Global conformal intervals cover 83% of South Asian
-#    outcomes outside 2020–21, but only 38% in 2020–21. Scaling and adaptive updating did not fix the crisis case in this first try.
-# 7. **Maldives and Afghanistan dominate squared error** (RMSE 13.4 and 9.5 for the GBM). Results are always reported with
-#    and without 2020–21, and per country.
-#
-# Next steps are in the progress report: switch to LightGBM and tune it (P1), add a quarterly-GDP/nowcast block and
-# fiscal-year-aware targets (P1), crisis-aware intervals (P2), GEP vintages (P2).
