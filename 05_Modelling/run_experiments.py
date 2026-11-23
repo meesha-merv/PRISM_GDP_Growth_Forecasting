@@ -1,9 +1,8 @@
-"""Run every experiment in the progress report and save tables and figures.
+"""Run every experiment and save tables and figures.
 
     python run_experiments.py            # uses cached feature stores if present
     python run_experiments.py --fresh    # rebuild everything from the raw files
 
-Outputs land in outputs/tables (CSV) and outputs/figures (PNG).
 """
 import shutil
 import sys
