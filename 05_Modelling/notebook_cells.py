@@ -1,15 +1,6 @@
 # %% [markdown]
-# # GDP Growth Forecasting, Part 5: Baseline Models and Evaluation
+# # GDP Growth Forecasting Baseline Models and Evaluation
 #
-#
-# Parts 1–4 (`01_Acquire_Data` … `04_Bivariate_Analysis`) explored the WDI panel. This part builds the forecasting
-# system and scores the baseline ladder. It answers the three weaknesses raised at the proposal presentation:
-#
-# | Feedback | What this notebook does |
-# |---|---|
-# | **B1.** Imputation can leak information not available at the forecast date | A vintage-aware feature store. No income-group median fill; values carried forward only inside a series' publication lag; remaining gaps filled *inside each training fold* with a missing flag. Real-time (as-published) values of last year's growth replace revised WDI values. |
-# | **B2.** IMF / World Bank comparison ignores country reporting periods | Step 1 checks the year labels of WEO, GEP and WDI country by country, and computes each country's *effective horizon* (months left in its reporting year at the cutoff). Monthly data are also aggregated over each country's own fiscal year. |
-# | **B3.** Experiments too broad, no prioritised reproducible baseline | One fixed baseline ladder, one evaluation protocol, one command (`python run_experiments.py`) that regenerates every table and figure. Extensions are ranked P1–P3 in the progress report. |
 #
 # ### Workflow
 #
@@ -22,9 +13,6 @@
 #                                                              │
 #     5. scores & paired tests ◄─┬─► 6. feature ablation ─┬─► 7. conformal intervals ─► 8. monthly refresh
 # ```
-#
-# All code lives in the `prism/` package next to this notebook. The notebook only calls it, so the
-# command-line runner and the notebook cannot disagree.
 #
 # > **Runtime.** The first full run builds 15 feature stores and takes about 20 minutes. Results are cached in
 # > `outputs/cache/`; later runs take seconds. Delete that folder (or run `python run_experiments.py --fresh`) to rebuild.
