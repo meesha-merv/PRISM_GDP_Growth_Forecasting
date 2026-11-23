@@ -1,14 +1,9 @@
 """Project settings: paths, country lists, fiscal years and publication lags.
 
-Every assumption that decides what the model is allowed to see sits in this
-file, so it can be checked and changed in one place.
 """
 from pathlib import Path
 
 # ---------------------------------------------------------------- paths
-# The code lives in <project>/05_Modelling/prism. The data folders sit in
-# <project>/wdi-dataset/wdi and <project>/raw-datafiles/raw, exactly as they
-# are unzipped from the submission archives.
 PKG_DIR = Path(__file__).resolve().parent
 MODEL_DIR = PKG_DIR.parent
 PROJECT_DIR = MODEL_DIR.parent
